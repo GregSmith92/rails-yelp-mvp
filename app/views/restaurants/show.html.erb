@@ -4,6 +4,14 @@
 <h3> <%= @restaurant.phone_number %> </h3>
 <h3> <%= @restaurant.category %> </h3>
 
-<%= link_to "Update this restaurant", restaurant_edit_path, class: "btn btn-primary" %>
+<%= link_to "Update this restaurant", edit_restaurant_path, class: "btn btn-primary" %>
 <%= link_to "Delete this restaurant", restaurant_path, method: :delete, class: "btn btn-danger"  %>
 <%= link_to "View all restaurants", restaurants_path, class: "btn btn-info"  %>
+<%= link_to "Review this restaurant", new_restaurant_review_path(@restaurant), class: "btn btn-success"  %>
+
+<p>
+  <strong>Reviews:</strong>
+  <% @restaurant.reviews.each do |review| %>
+    <li><%= link_to review.content, review_path(review) %></li>
+  <% end %>
+</p>
